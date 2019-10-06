@@ -11,11 +11,10 @@ import com.phoenix.crypto.repository.PricesRepository;
 import com.phoenix.crypto.utils.SendMail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PriceService {
@@ -26,20 +25,41 @@ public class PriceService {
     @Autowired
     private PricesRepository pricesRepository;
 
+    @Autowired
+    private CryptoDao cryptoDao;
+
 //    @Autowired
 //    private CryptoDao cryptoDao;
 
-    public ResponseEntity<PricesCryptoOutput[]> getInformation(String id) {
+    public Optional<List<PricesCryptoOutput>> getInformation(String id) {
         System.out.println("PriceService getInfo ==>> " + pricesRestClient.getCryptoInformation(id));
         return pricesRestClient.getCryptoInformation(id);
     }
 
-//    public Crypto addCrypto(Crypto crypto){
-//        return this.cryptoDao.save(crypto);
-//    }
+    public List<Crypto> mapCrypto(List<PricesCryptoOutput> cryptoOutputs) {
+
+        List<Crypto> cryptos = new ArrayList<>();
+
+        cryptoOutputs.forEach($ -> {
+            Crypto crypto = new Crypto();
+            crypto.price_btc = $.getPrice_btc();
+            crypto.name = $.getName();
+            //...
+
+        });
+
+        return cryptos;
+
+    }
+
+    private void saveCrypto(List<PricesCryptoOutput> pricesCryptoOutputs) {
+        List<Crypto> cryptos = mapCrypto(pricesCryptoOutputs);
+        cryptoDao.saveAll(cryptos);
+    }
 
 
-    public String enableDisableAlert(String id, double alertPrice, boolean enableDisable) {
+
+    public String enableDisableAlert(@NonNull String id, double alertPrice, boolean enableDisable) {
         pricesRepository.enableDisableAlert(enableDisable);
         if(enableDisable)
             initMonitoringOfPrice(alertPrice, id);
@@ -48,15 +68,13 @@ public class PriceService {
 
     public String initMonitoringOfPrice(double alertPrice, String id) {
         System.out.println("===> Monitoring price <===");
-        List<PricesCryptoOutput> info = Arrays.asList(pricesRestClient.getCryptoInformation(id).getBody());
-        System.out.println("info === " + info);
-        info.forEach(item->{
-            System.out.println("item ===>>" + item.getPrice_usd() + "  |||  " +  item.getName());
-            if(Double.parseDouble(item.getPrice_usd()) > alertPrice) {
-                alertUser(Double.parseDouble(item.getPrice_usd()), id);
-            }
-        });
-        return info.toString();
+
+        Optional<List<PricesCryptoOutput>> pricesCryptoOutput = pricesRestClient.getCryptoInformation(id);
+
+        pricesCryptoOutput.ifPresent(this::saveCrypto);
+
+        // primjer mapiranja tipova pomocu optionala
+        return pricesCryptoOutput.map($ -> $.get(0).getName()).orElse("no_name");
     }
 
     private void alertUser(double alertPrice, String id) {
