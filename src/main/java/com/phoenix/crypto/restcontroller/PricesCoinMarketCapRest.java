@@ -1,12 +1,14 @@
 package com.phoenix.crypto.restcontroller;
 
 import com.phoenix.crypto.entity.Crypto;
+import com.phoenix.crypto.output.PricesCryptoOutput;
 import com.phoenix.crypto.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.InputStream;
+import java.util.List;
 
 @RestController
 @RequestMapping("/query/prices/crypto")
@@ -17,8 +19,9 @@ public class PricesCoinMarketCapRest {
 
     @GetMapping(value="/{id}")
     public ResponseEntity<?> getPrices(@PathVariable String id){
-        System.out.println("RestControler ===>> " + ResponseEntity.ok(priceService.getInformation(id).getBody()));
-        return ResponseEntity.ok(priceService.getInformation(id).getBody());
+        ResponseEntity<?> response = ResponseEntity.of(priceService.getInformation(id));
+        System.out.println("RestControler ===>> " + response);
+        return response;
     }
 
     @PostMapping(value="alert/{id}")
