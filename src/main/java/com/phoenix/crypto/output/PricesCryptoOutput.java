@@ -2,23 +2,23 @@ package com.phoenix.crypto.output;
 
 import com.phoenix.crypto.output.builder.PricesCryptoOutputBuilder;
 
-//dto ili model
+//DTO - model
 public class PricesCryptoOutput {
     private String id;
     private String name;
     private String symbol;
-    private String rank;
-    private String price_usd;
-    private String price_btc;
-    private String twentyFourHour_volume_usd;
-    private String market_cap_usd;
-    private String available_supply;
-    private String total_supply;
-    private String max_supply;
-    private String percent_change_1h;
-    private String percent_change_24h;
-    private String percent_change_7d;
-    private String last_updated;
+    private int rank;
+    private double price_usd;
+    private double price_btc;
+    private double twentyFourHour_volume_usd;
+    private double market_cap_usd;
+    private double available_supply;
+    private double total_supply;
+    private double max_supply;
+    private double percent_change_1h;
+    private double percent_change_24h;
+    private double percent_change_7d;
+    private double last_updated;
 
     public PricesCryptoOutput(PricesCryptoOutputBuilder pricesCryptoOutputBuilder){
         id = pricesCryptoOutputBuilder.id;
@@ -60,76 +60,76 @@ public class PricesCryptoOutput {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
-    public void setRank(String rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
-    public String getPrice_usd() {
+    public double getPrice_usd() {
         return price_usd;
     }
-    public void setPrice_usd(String price_usd) {
+    public void setPrice_usd(double price_usd) {
         this.price_usd = price_usd;
     }
-    public String getPrice_btc() {
+    public double getPrice_btc() {
         return price_btc;
     }
-    public void setPrice_btc(String price_btc) {
+    public void setPrice_btc(double price_btc) {
         this.price_btc = price_btc;
     }
-    public String getTwentyFourHour_volume_usd() {
+    public double getTwentyFourHour_volume_usd() {
         return twentyFourHour_volume_usd;
     }
-    public void setTwentyFourHour_volume_usd(String twentyFourHour_volume_usd) {
+    public void setTwentyFourHour_volume_usd(double twentyFourHour_volume_usd) {
         this.twentyFourHour_volume_usd = twentyFourHour_volume_usd;
     }
-    public String getMarket_cap_usd() {
+    public double getMarket_cap_usd() {
         return market_cap_usd;
     }
-    public void setMarket_cap_usd(String market_cap_usd) {
+    public void setMarket_cap_usd(double market_cap_usd) {
         this.market_cap_usd = market_cap_usd;
     }
-    public String getAvailable_supply() {
+    public double getAvailable_supply() {
         return available_supply;
     }
-    public void setAvailable_supply(String available_supply) {
+    public void setAvailable_supply(double available_supply) {
         this.available_supply = available_supply;
     }
-    public String getTotal_supply() {
+    public double getTotal_supply() {
         return total_supply;
     }
-    public void setTotal_supply(String total_supply) {
+    public void setTotal_supply(double total_supply) {
         this.total_supply = total_supply;
     }
-    public String getMax_supply() {
+    public double getMax_supply() {
         return max_supply;
     }
-    public void setMax_supply(String max_supply) {
+    public void setMax_supply(double max_supply) {
         this.max_supply = max_supply;
     }
-    public String getPercent_change_1h() {
+    public double getPercent_change_1h() {
         return percent_change_1h;
     }
-    public void setPercent_change_1h(String percent_change_1h) {
+    public void setPercent_change_1h(double percent_change_1h) {
         this.percent_change_1h = percent_change_1h;
     }
-    public String getPercent_change_24h() {
+    public double getPercent_change_24h() {
         return percent_change_24h;
     }
-    public void setPercent_change_24h(String percent_change_24h) {
+    public void setPercent_change_24h(double percent_change_24h) {
         this.percent_change_24h = percent_change_24h;
     }
-    public String getPercent_change_7d() {
+    public double getPercent_change_7d() {
         return percent_change_7d;
     }
-    public void setPercent_change_7d(String percent_change_7d) {
+    public void setPercent_change_7d(double percent_change_7d) {
         this.percent_change_7d = percent_change_7d;
     }
-    public String getLast_updated() {
+    public double getLast_updated() {
         return last_updated;
     }
-    public void setLast_updated(String last_updated) {
+    public void setLast_updated(double last_updated) {
         this.last_updated = last_updated;
     }
 }

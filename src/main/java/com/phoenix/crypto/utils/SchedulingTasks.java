@@ -26,4 +26,9 @@ public class SchedulingTasks {
             priceService.initMonitoringOfPrice(pricesRepository.getValueAlert().getPrice(), pricesRepository.getValueAlert().getId());
         }
     }
+
+//    @Scheduled(fixedDelay = MINUTES)
+//    public void savePrice() {
+//        priceService.initPrice(pricesRepository.getValueAlert().getId());
+//    }
 }

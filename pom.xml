@@ -34,12 +34,12 @@
             <version>1.4</version>
         </dependency>
 
-<!--        &lt;!&ndash;Oracle database driver &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.oracle</groupId>-->
-<!--            <artifactId>ojdbc7</artifactId>-->
-<!--            <version>12.1.0</version>-->
-<!--        </dependency>-->
+        <!--Oracle database driver -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

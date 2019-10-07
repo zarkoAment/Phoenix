@@ -1,12 +1,9 @@
 package com.phoenix.crypto.restcontroller;
 
-import com.phoenix.crypto.entity.Crypto;
 import com.phoenix.crypto.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.InputStream;
 
 @RestController
 @RequestMapping("/query/prices/crypto")

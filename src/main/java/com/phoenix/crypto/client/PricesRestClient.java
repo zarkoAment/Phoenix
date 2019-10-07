@@ -17,5 +17,5 @@ public class PricesRestClient {
         System.out.println("restTemplate ==>> "+ restTemplate.getForEntity("https://api.coinmarketcap.com/v1/ticker/"+id, PricesCryptoOutput[].class));
 
         return restTemplate.getForEntity("https://api.coinmarketcap.com/v1/ticker/"+id, PricesCryptoOutput[].class);
-    }
+   }
 }
