@@ -1,6 +1,5 @@
 package com.phoenix.crypto;
 
-import com.phoenix.crypto.utils.SchedulingTasks;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -20,9 +19,9 @@ public class CryptoApplication {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
-
-    @Bean
-    public SchedulingTasks task() {
-        return new SchedulingTasks();
-    }
+//
+//    @Bean
+//    public SchedulingTasks task() {
+//        return new SchedulingTasks();
+//    }
 }
